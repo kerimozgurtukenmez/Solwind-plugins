@@ -12,7 +12,7 @@ Solwind's catalog (`plugin-catalog.json` in the Solwind repository) lists every 
 | Plugin | For | Tested |
 |---|---|---|
 | `NBFC/nbfc` | Fans through [NBFC-Linux](https://github.com/nbfc-linux/nbfc-linux) (needs NBFC with a config for your laptop) | HP Victus 16-r0xxx |
-| `HP/hp-wmi-fan` | HP Victus / Omen fans without NBFC, through the hp-wmi driver's `pwm1` and `pwm2`. Works on the boards the driver opens both files on (the [hp-wmi-fan-and-backlight-control](https://github.com/TUXOV/hp-wmi-fan-and-backlight-control) module's list); `solwind fan-permission` gives the write permission, and NBFC must be stopped and its plugin turned off | Victus 16-r0xxx (8BBD) |
+| `HP/hp-wmi-fan` | HP Victus / Omen fans without NBFC, through the hp-wmi driver's `pwm1` and `pwm2`. Works on the boards the driver opens both files on (the [hp-wmi-fan-and-backlight-control](https://github.com/TUXOV/hp-wmi-fan-and-backlight-control) module's list); `solwind fan-permission` gives the write permission, and NBFC must be stopped and its plugin turned off | Victus 16-r0xxx (8BBD), with the module patched for that board: the stock module doesn't list it |
 | `HP/hp-wmi-keyboard` | HP single-zone RGB keyboard light (`hp::kbd_backlight`, needs the [hp-wmi-fan-and-backlight-control](https://github.com/TUXOV/hp-wmi-fan-and-backlight-control) module), with effects | HP Victus 16-r0xxx |
 | `HP/hp-wmi-keyboard-zones` | HP four-zone RGB keyboards (`hp::kbd_zoned_backlight-*`, same module) | no |
 | `HP/hp-wmi-rgb-zones` | HP four-zone keyboards with older copies of that module (`rgb_zones`) | no |
