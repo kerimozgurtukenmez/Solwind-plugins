@@ -33,6 +33,10 @@ solwind plugin install --source . HP/hp-wmi-keyboard     # installs a local copy
 
 A plugin runs inside solwindd, as your user. Solwind only loads one built for its own SDK, from files nobody else can change.
 
+## Thanks
+
+These plugins only use what others built: [NBFC-Linux](https://github.com/nbfc-linux/nbfc-linux), [hp-wmi-fan-and-backlight-control](https://github.com/TUXOV/hp-wmi-fan-and-backlight-control) by TUXOV and the kernel's `hp-wmi` developers, [msi-ec](https://github.com/BeardOverflow/msi-ec) by BeardOverflow and its contributors, the `msi-wmi-platform` fan curve patches by Armin Wolf and Antheas Kapenekakis, and [OpenRGB](https://openrgb.org). None of them is included here, and none of them made or supports these plugins.
+
 ## License
 
 GPL-3.0 (see LICENSE), like Solwind.
