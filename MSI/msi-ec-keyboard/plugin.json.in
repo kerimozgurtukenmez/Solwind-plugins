@@ -1,0 +1,10 @@
+{
+    "id": "MSI/msi-ec-keyboard",
+    "brand": "MSI",
+    "module": "msi-ec (BeardOverflow/msi-ec)",
+    "kind": "keyboard",
+    "version": "1.0.0",
+    "priority": 40,
+    "description": "MSI single-color keyboard light (msiacpi::kbd_backlight of the msi-ec module), brightness only",
+    "sdk": "@SOLWIND_SDK_ID@"
+}

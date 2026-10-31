@@ -1,0 +1,10 @@
+{
+    "id": "OpenRGB/openrgb",
+    "brand": "OpenRGB",
+    "module": "OpenRGB's SDK server",
+    "kind": "keyboard",
+    "version": "1.0.0",
+    "priority": 90,
+    "description": "RGB keyboards the kernel doesn't expose (MSI's SteelSeries keyboards and others), through OpenRGB",
+    "sdk": "@SOLWIND_SDK_ID@"
+}
