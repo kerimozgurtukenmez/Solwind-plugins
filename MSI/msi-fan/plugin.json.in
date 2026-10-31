@@ -1,0 +1,10 @@
+{
+    "id": "MSI/msi-fan",
+    "brand": "MSI",
+    "module": "msi-wmi-platform (fan curves) or msi-ec",
+    "kind": "fan",
+    "version": "1.0.0",
+    "priority": 65,
+    "description": "MSI fans: speeds through msi-wmi-platform's fan curves where the kernel has them, else readings and max fan through msi-ec",
+    "sdk": "@SOLWIND_SDK_ID@"
+}
