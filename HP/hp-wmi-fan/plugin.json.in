@@ -1,0 +1,10 @@
+{
+    "id": "HP/hp-wmi-fan",
+    "brand": "HP",
+    "module": "hp-wmi (pwm1, pwm2)",
+    "kind": "fan",
+    "version": "1.0.0",
+    "priority": 60,
+    "description": "HP Victus and Omen fans through the hp-wmi driver's pwm1 and pwm2, without NBFC",
+    "sdk": "@SOLWIND_SDK_ID@"
+}
