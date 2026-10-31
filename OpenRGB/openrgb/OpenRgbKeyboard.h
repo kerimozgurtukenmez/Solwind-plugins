@@ -20,7 +20,7 @@
 class OpenRgbKeyboard : public KeyboardPlugin
 {
 public:
-    explicit OpenRgbKeyboard(quint16 port = Orgb::defaultPort) : m_port(port), m_client(port) {}
+    explicit OpenRgbKeyboard(quint16 port = Orgb::defaultPort) : m_client(port) {}
 
     QString id() const override { return QStringLiteral("openrgb"); }
     bool rgb() const override { return true; }
@@ -43,7 +43,6 @@ private:
     QString send() const;
     void waitFor(int ms) const;
 
-    quint16 m_port;
     mutable Orgb::Client m_client;
     mutable bool m_started = false, m_modeSet = false;
     mutable QElapsedTimer m_clock;

@@ -142,7 +142,8 @@ void Client::close()
 bool Client::stillOpen()
 {
     char waste[4096];
-    while (connected()) {
+    for (int rounds = 0; connected(); ++rounds) {
+        if (rounds > 1024) { close(); return false; }   // (no server talks this much on its own)
         const ssize_t n = ::recv(m_fd, waste, sizeof waste, MSG_DONTWAIT);
         if (n > 0) { m_listChanged = true; continue; }
         if (n < 0 && (errno == EAGAIN || errno == EWOULDBLOCK)) return true;

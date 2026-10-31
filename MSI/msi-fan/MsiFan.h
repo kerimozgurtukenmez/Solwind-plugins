@@ -89,6 +89,7 @@ private:
     int m_mode = 2;                        // pwm1_enable as last read
     double m_temp = std::numeric_limits<double>::quiet_NaN();
     bool m_writable = false;
+    bool m_boost = false;                  // we turned cooler boost on
     bool m_nbfc = false;
     quint64 m_seq = 0;
 };

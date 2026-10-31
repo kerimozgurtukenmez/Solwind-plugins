@@ -169,25 +169,31 @@ void HpWmiFan::finish(const Done &done, const QString &error)
     QTimer::singleShot(0, this, &HpWmiFan::poll);
 }
 
+// What was refused or failed isn't kept: a later command must not carry it out
+void HpWmiFan::change(const std::function<void()> &what, const Done &done)
+{
+    const auto before = m_pct;
+    what();
+    const QString error = apply();
+    if (!error.isEmpty()) m_pct = before;
+    finish(done, error);
+}
+
 void HpWmiFan::setPercent(int fan, int pct, Done done)
 {
     if (fan < 0 || fan > 1) { finish(done, m_host.t(u"No such fan"_s)); return; }
-    m_pct[fan] = std::clamp(pct, 0, 100);
-    finish(done, apply());
+    change([&] { m_pct[fan] = std::clamp(pct, 0, 100); }, done);
 }
 
 void HpWmiFan::setAuto(int fan, Done done)
 {
     if (fan > 1) { finish(done, m_host.t(u"No such fan"_s)); return; }
-    if (fan < 0) m_pct = { -1, -1 };
-    else m_pct[fan] = -1;
-    finish(done, apply());
+    change([&] { if (fan < 0) m_pct = { -1, -1 }; else m_pct[fan] = -1; }, done);
 }
 
 void HpWmiFan::releaseAll(Done done)
 {
-    m_pct = { -1, -1 };
-    finish(done, apply());
+    change([&] { m_pct = { -1, -1 }; }, done);
 }
 
 QStringList HpWmiFan::handBackCommand() const

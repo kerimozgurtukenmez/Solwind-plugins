@@ -201,6 +201,7 @@ QString MsiFan::applyCurves()
     for (int fan = 0; fan < 2; ++fan) {          // (a failure on one doesn't stop the other's way back)
         const int pwm = m_pct[fan] < 0 ? -1 : pwmOf(m_pct[fan]);
         if (pwm < 0 ? !m_ours[fan] : pwm == m_written[fan]) continue;
+        if (pwm >= 0) m_ours[fan] = true;      // (also if it stops half way: part of the curve is ours)
         if (!writeCurve(fan, pwm, &error)) { failed = true; continue; }
         m_written[fan] = pwm;
         m_ours[fan] = pwm >= 0;
@@ -224,7 +225,10 @@ QString MsiFan::applyBoost()
 {
     QString error;
     const bool on = m_pct[0] >= 100 || m_pct[1] >= 100;
-    return put(m_found.ec + u"/cooler_boost"_s, on ? "on" : "off", &error) ? QString() : error;
+    if (!on && !m_boost) return QString();     // (the Fn key's boost isn't ours to turn off)
+    if (!put(m_found.ec + u"/cooler_boost"_s, on ? "on" : "off", &error)) return error;
+    m_boost = on;
+    return QString();
 }
 
 QString MsiFan::apply()

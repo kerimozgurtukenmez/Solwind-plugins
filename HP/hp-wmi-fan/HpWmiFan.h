@@ -70,6 +70,7 @@ private:
     QString apply();                       // writes m_pct to the driver; "" or what went wrong
     bool put(const QString &file, int value, QString *error);
     int readInt(const QString &path) const;
+    void change(const std::function<void()> &what, const Done &done);
     void finish(const Done &done, const QString &error);
 
     const PluginHost &m_host;
